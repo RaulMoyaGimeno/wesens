@@ -1,0 +1,12 @@
+{
+  "name": "Grimm",
+  "version": "1.0.0",
+  "description": "Agenda con distintos tipos de wesel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raúl Moya",
+  "license": "ISC",
+  "type": "module"
+}

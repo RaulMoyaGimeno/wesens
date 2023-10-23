@@ -4,10 +4,69 @@
     <title>Grimm notebook</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="./style.css" rel="stylesheet" />
-    <script src="./index.js"></script>
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/index.js" type="module"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
-    <h1>Hola mundo</h1>
+    <h1>Grimm Notebook</h1>
+    <div class="container">
+      <section class="wesen_list">
+        <ul></ul>
+      </section>
+      <section class="wesen_data">
+        <form id="wesen_data" onsubmit="return false;">
+          <fieldset>
+            <legend>Datos wesen</legend>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              value=""
+              placeholder="Nombre"
+              required
+            /><br /><br />
+
+            <input
+              type="text"
+              id="imagen"
+              name="imagen"
+              value=""
+              placeholder="Url imagen"
+              required
+            /><br /><br />
+
+            <select id="wesen_type" name="tipo" required>
+              <option value="">Tipo de wesen</option></select
+            ><br /><br />
+
+            <select id="wesen_danger" name="peligrosidad" required>
+              <option value="">Peligrosidad de wesen</option></select
+            ><br /><br />
+
+            <textarea
+              type="text"
+              id="descripcion"
+              name="descripcion"
+              value=""
+              placeholder="Descripcion"
+              required
+            ></textarea
+            ><br /><br />
+
+            <textarea
+              id="notas"
+              name="notas"
+              placeholder="Notas"
+              value=""
+            ></textarea
+            ><br /><br />
+            <button id="crear">Crear</button>
+            <button id="editar">Editar</button>
+            <button id="eliminar">Eliminar</button>
+          </fieldset>
+        </form>
+      </section>
+    </div>
   </body>
 </html>
