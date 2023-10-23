@@ -12,7 +12,7 @@ function crearLiWesen(wesen) {
   li.appendChild(document.createElement("br"));
   const img = document.createElement("img");
   img.src = wesen.imagen;
-  img.alt = "Wesen";
+  img.alt = wesen.nombre;
   li.appendChild(img);
   li.addEventListener("click", () => cargarWesen(wesen));
   li.id = wesen.uuid;
@@ -20,32 +20,21 @@ function crearLiWesen(wesen) {
 }
 
 function generarLista() {
-  wesens.forEach((wesen) => {
-    crearLiWesen(wesen);
-  });
+  wesens.forEach((wesen) => crearLiWesen(wesen));
 }
 
 function cargarWesen(wesen) {
-  const nombre = document.getElementById("nombre");
-  const imagen = document.getElementById("imagen");
-  const wesen_type = document.getElementById("wesen_type");
-  const wesen_danger = document.getElementById("wesen_danger");
-  const descripcion = document.getElementById("descripcion");
-  const notas = document.getElementById("notas");
-
-  nombre.value = wesen.nombre;
-  imagen.value = wesen.imagen;
-  wesen_type.value = wesen.tipo;
-  wesen_danger.value = wesen.peligrosidad;
-  descripcion.value = wesen.descripcion;
-  notas.value = wesen.notas;
-
+  document.getElementById("nombre").value = wesen.nombre;
+  document.getElementById("imagen").value = wesen.imagen;
+  document.getElementById("wesen_type").value = wesen.tipo;
+  document.getElementById("wesen_danger").value = wesen.peligrosidad;
+  document.getElementById("descripcion").value = wesen.descripcion;
+  document.getElementById("notas").value = wesen.notas;
   wesenActivo = wesen;
 }
 
 function cargarSelect(elementId, dataType) {
   const select = document.getElementById(elementId);
-
   Object.keys(dataType).forEach(function (tipo) {
     const option = document.createElement("option");
     option.text = tipo;
@@ -57,19 +46,13 @@ function crear() {
   if (!document.getElementById("wesen_data").checkValidity()) {
     return;
   }
-  const nombre = document.getElementById("nombre").value;
-  const imagen = document.getElementById("imagen").value;
-  const wesen_type = document.getElementById("wesen_type").value;
-  const wesen_danger = document.getElementById("wesen_danger").value;
-  const descripcion = document.getElementById("descripcion").value;
-  const notas = document.getElementById("notas").value;
   const wesen = new Wesen(
-    nombre,
-    imagen,
-    wesen_type,
-    wesen_danger,
-    descripcion,
-    notas,
+    document.getElementById("nombre").value,
+    document.getElementById("imagen").value,
+    document.getElementById("wesen_type").value,
+    document.getElementById("wesen_danger").value,
+    document.getElementById("descripcion").value,
+    document.getElementById("notas").value,
   );
   wesens.push(wesen);
   crearLiWesen(wesen);
@@ -86,18 +69,15 @@ function editar() {
   if (!document.getElementById("wesen_data").checkValidity()) {
     return;
   }
-
   wesenActivo.nombre = document.getElementById("nombre").value;
   wesenActivo.imagen = document.getElementById("imagen").value;
   wesenActivo.tipo = document.getElementById("wesen_type").value;
   wesenActivo.peligrosidad = document.getElementById("wesen_danger").value;
   wesenActivo.descripcion = document.getElementById("descripcion").value;
   wesenActivo.notas = document.getElementById("notas").value;
-
   document.getElementById(
     wesenActivo.uuid,
   ).innerHTML = `${wesenActivo.nombre} <br> <img src='${wesenActivo.imagen}' alt='${wesenActivo.nombre}'>`;
-
   successMessage("Wesen editado correctamente");
 }
 
@@ -110,7 +90,6 @@ function eliminar() {
   document.getElementById(wesenActivo.uuid).remove();
   wesenActivo = undefined;
   document.getElementById("wesen_data").reset();
-
   successMessage("Wesen eliminado correctamente");
 }
 
@@ -118,8 +97,7 @@ cargarSelect("wesen_type", Tipo);
 cargarSelect("wesen_danger", Peligrosidad);
 
 function addEventBtn(btn, action) {
-  const button = document.getElementById(btn);
-  button.addEventListener("click", action);
+  document.getElementById(btn).addEventListener("click", action);
 }
 
 addEventBtn("crear", crear);
