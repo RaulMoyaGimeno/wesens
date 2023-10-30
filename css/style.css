@@ -43,10 +43,12 @@ li {
   border: 1px blue solid;
   width: 150px;
   background-color: white;
+  word-wrap: break-word;
 }
 
 li:hover {
   cursor: pointer;
+  border: 2px solid darkblue;
 }
 
 textarea {
@@ -64,8 +66,34 @@ button {
   color: white;
 }
 
+button:hover {
+  border: 2px solid darkblue;
+  cursor: pointer;
+}
+
 fieldset {
   border-color: blue;
   border-radius: 8px;
   background-color: white;
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: white blue;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: blue;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 20px;
+  border: 3px solid blue;
 }

@@ -9,18 +9,13 @@ function crearLiWesen(wesen) {
   const lista = document.querySelector("ul");
   const li = document.createElement("li");
   li.textContent = wesen.nombre;
-  li.appendChild(document.createElement("br"));
   const img = document.createElement("img");
   img.src = wesen.imagen;
-  img.alt = wesen.nombre;
+  img.alt = "Wesen";
   li.appendChild(img);
   li.addEventListener("click", () => cargarWesen(wesen));
   li.id = wesen.uuid;
   lista.appendChild(li);
-}
-
-function generarLista() {
-  wesens.forEach((wesen) => crearLiWesen(wesen));
 }
 
 function cargarWesen(wesen) {
@@ -93,15 +88,13 @@ function eliminar() {
   successMessage("Wesen eliminado correctamente");
 }
 
-cargarSelect("wesen_type", Tipo);
-cargarSelect("wesen_danger", Peligrosidad);
-
 function addEventBtn(btn, action) {
   document.getElementById(btn).addEventListener("click", action);
 }
 
+cargarSelect("wesen_type", Tipo);
+cargarSelect("wesen_danger", Peligrosidad);
 addEventBtn("crear", crear);
 addEventBtn("editar", editar);
 addEventBtn("eliminar", eliminar);
-
-generarLista();
+wesens.forEach((wesen) => crearLiWesen(wesen));
